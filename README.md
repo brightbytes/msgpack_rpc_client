@@ -1,4 +1,6 @@
-# MsgpackRpcClient - a lean Ruby client for the MessagePack-RPC protocol
+# MsgpackRpcClient [![CircleCI](https://circleci.com/gh/brightbytes/msgpack_rpc_client.svg?style=svg)](https://circleci.com/gh/brightbytes/msgpack_rpc_client)
+
+## A lean Ruby client for the MessagePack-RPC protocol
 
 Use this gem to achieve reliable, fault-tolerant RPC with your microservices.
 
@@ -21,8 +23,9 @@ This implementation:
 * reliable
 * high load tested
 * used in production, with up to a 1000 requests per second in a single frontend request.
+* supports JRuby and MRI from version 1.9.3 - for those who have a huge legacy app that you're dying to factor into microservices!
 
-Also, this implementation **does NOT support asynchronous calls** - if you require this feature, it is not for you. However, from my experience, almost no Ruby applications require asynchronous communication.
+However, this implementation **does NOT support asynchronous calls** - if you require this feature, it is not for you. However, from my experience, almost no Ruby applications require asynchronous communication.
 
 ## Installation
 
