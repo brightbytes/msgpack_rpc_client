@@ -1,11 +1,12 @@
 dependencies:
   override:
-  # Install circleci-matrix
-  # See .circleci-matrix.yml for configuration
-  - mkdir -p ~/.local/bin
-  - curl -fsSL https://raw.githubusercontent.com/michaelcontento/circleci-matrix/master/src/circleci-matrix.sh -o ~/.local/bin/circleci-matrix
-  - chmod +x ~/.local/bin/circleci-matrix
+    - rvm install 2.1.10
+    - rvm install 2.2.5
+    - rvm install 2.3.1
+    - rvm install jruby
+    - rvm 2.1.10,2.2.5,2.3.1,jruby do gem install bundler -v 1.10.6
+    - rvm 2.1.10,2.2.5,2.3.1,jruby do bundle install
 
 test:
   override:
-    - circleci-matrix
+    - rvm 2.1.10,2.2.5,2.3.1,jruby do bundle exec rspec spec
