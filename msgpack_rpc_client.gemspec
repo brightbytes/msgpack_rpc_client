@@ -6,11 +6,11 @@ require 'msgpack_rpc_client/version'
 Gem::Specification.new do |spec|
   spec.name          = "msgpack_rpc_client"
   spec.version       = MsgpackRpcClient::VERSION
-  spec.authors       = ["Leonid Shevtsov"]
+  spec.authors       = ["BrightBytes", "Leonid Shevtsov"]
   spec.email         = ["leonid@shevtsov.me"]
 
-  spec.summary       = %q{A lean client for Messagepack-RPC.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{A lean Ruby client for the MessagePack-RPC protocol.}
+  spec.homepage      = "https://github.com/brightbytes/msgpack_rpc_client"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
