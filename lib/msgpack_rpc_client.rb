@@ -118,7 +118,9 @@ class MsgpackRpcClient
   # (Not 100% reliable)
   def configure_socket_keepalive
     @socket.setsockopt(Socket::SOL_SOCKET, Socket::SO_KEEPALIVE, true)
-    @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_KEEPINTVL, 10)
+    if defined?(Socket::TCP_KEEPINTVL) # Not available on JRuby
+      @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_KEEPINTVL, 10)
+    end
     @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_KEEPCNT, 5)
     if defined?(Socket::TCP_KEEPIDLE) # Not available on BSD / OSX
       @socket.setsockopt(Socket::IPPROTO_TCP, Socket::TCP_KEEPIDLE, 50)
