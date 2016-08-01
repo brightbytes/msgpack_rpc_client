@@ -1,13 +1,14 @@
 machine:
   environment:
-    RUBY_VERSIONS: 1.9.3,2.0.0,2.1.10,2.2.5,2.3.1,jruby-1.7.25,jruby-9.1.2.0
+    RUBY_VERSIONS: 1.9.3,2.0.0,2.1.10,2.2.5,2.3.1
 
 dependencies:
   override:
     - rvm install $RUBY_VERSIONS
-    - rvm $RUBY_VERSIONS do gem install bundler -v 1.10.6
-    - rvm $RUBY_VERSIONS do bundle install
+    - rvm install jruby --2.0
+    - rvm $RUBY_VERSIONS,jruby do gem install bundler -v 1.10.6
+    - rvm $RUBY_VERSIONS,jruby do bundle install
 
 test:
   override:
-    - rvm $RUBY_VERSIONS do bundle exec rspec spec
+    - rvm $RUBY_VERSIONS,jruby do bundle exec rspec spec
