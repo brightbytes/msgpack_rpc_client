@@ -1,0 +1,10 @@
+env:
+  - VERSION=2.1.10
+  - VERSION=2.2.5
+  - VERSION=2.3.1
+  - VERSION=jruby
+
+command:
+  - gem install bundler -v 1.10.6
+  - bundle install
+  - bundle exec rspec spec

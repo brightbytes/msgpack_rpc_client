@@ -1,16 +1,11 @@
 dependencies:
   pre:
   # Install circleci-matrix
+  # See .circleci-matrix.yml for configuration
   - mkdir -p ~/.local/bin
   - curl -fsSL https://raw.githubusercontent.com/michaelcontento/circleci-matrix/master/src/circleci-matrix.sh -o ~/.local/bin/circleci-matrix
   - chmod +x ~/.local/bin/circleci-matrix
 
-env:
-  - VERSION=2.1.10
-  - VERSION=2.2.5
-  - VERSION=2.3.1
-  - VERSION=jruby
-
-dependencies:
-  before:
-    gem install bundler -v 1.10.6
+test:
+  override:
+    - circleci-matrix
