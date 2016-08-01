@@ -25,24 +25,18 @@ class MsgpackRpcClient
   # * max_retries - number of times to retry sending a request
   # * max_connect_retries - number of times to retry connecting to the server
   # * connect_retry_wait - wait between connection retry attempts
-  def initialize(
-    host:,
-    port:,
-    use_ssl: false,
-    max_retries: DEFAULT_MAX_RETRIES,
-    max_connect_retries: DEFAULT_MAX_CONNECT_RETRIES,
-    connect_retry_wait: DEFAULT_CONNECT_RETRY_WAIT,
-    logger: nil
-  )
-    @host = host
-    @port = port
-    @use_ssl = use_ssl
-    @max_retries = max_retries
-    @max_connect_retries = max_connect_retries
-    @connect_retry_wait = connect_retry_wait
+  #
+  # TODO: once we are long past the <2.0.0 legacy, replace with named args
+  def initialize(options={})
+    @host = options.fetch(:host)
+    @port = options.fetch(:port)
+    @use_ssl = options.fetch(:use_ssl, false)
+    @logger = options.fetch(:logger, nil)
+    @max_retries = options.fetch(:max_retries, DEFAULT_MAX_RETRIES)
+    @max_connect_retries = options.fetch(:max_connect_retries, DEFAULT_MAX_CONNECT_RETRIES)
+    @connect_retry_wait = options.fetch(:connect_retry_wait, DEFAULT_CONNECT_RETRY_WAIT)
     @msgid = 1
     @call_mutex = Mutex.new
-    @logger = logger
     init_socket
   end
 
