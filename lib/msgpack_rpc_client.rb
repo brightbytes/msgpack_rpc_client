@@ -109,7 +109,7 @@ class MsgpackRpcClient
     end
     # Attach streaming packer/unpacker to the socket
     @packer = MessagePack::Packer.new(@socket)
-    @unpacker = MessagePack::Unpacker.new(@socket, symbolize_keys: true)
+    @unpacker = MessagePack::Unpacker.new(@socket, { symbolize_keys: true })
   end
 
   # Configure the TCP stack to send keepalive messages, as we want a long-living
