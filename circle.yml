@@ -1,5 +1,5 @@
 dependencies:
-  pre:
+  override:
   # Install circleci-matrix
   # See .circleci-matrix.yml for configuration
   - mkdir -p ~/.local/bin
