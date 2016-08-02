@@ -60,8 +60,10 @@ gem 'msgpack', git: 'https://github.com/msgpack/msgpack-ruby.git'
 ``` ruby
 require 'msgpack_rpc_client'
 
-client = MsgpackRpcClient.new('127.0.0.1', 12345)
+client = MsgpackRpcClient.new(host: '127.0.0.1', port: 12345)
 response = client.call('HelloWorld', name: 'Ruby')
+# You should re-use the client for all subsequent calls to the same server.
+# It's never necessary to re-connect, and the client is threadsafe.
 ```
 
 See the `examples` directory for a complete server-client example.
