@@ -12,10 +12,11 @@ The official implementation:
 * does not re-establish connections.
 * designed to be asynchronous
 * displayed instability under high load in production
+* does not support JRuby
 
 This implementation:
 
-* has no dependencies
+* has no dependencies but the msgpack gem
 * is under 200 lines in one class
 * automatically re-establishes connections in the case of inevitable network errors, service restarts, deploys, and so on.
 * supports SSL
@@ -23,7 +24,8 @@ This implementation:
 * reliable
 * high load tested
 * used in production, with up to a 1000 requests per second in a single frontend request.
-* supports JRuby and MRI from version 1.9.3 - for those who have a huge legacy app that you're dying to factor into microservices!
+* supports MRI from version 1.9.3 - for those who have a huge legacy app that you're dying to factor into microservices!
+* supports JRuby (but see installation notes)
 
 However, this implementation **does NOT support asynchronous calls** - if you require this feature, it is not for you. However, from my experience, almost no Ruby applications require asynchronous communication.
 
@@ -42,6 +44,16 @@ And then execute:
 Or install it yourself as:
 
     $ gem install msgpack_rpc_client
+
+### JRuby
+
+There was a bug in the jruby msgpack implementation that was fixed in [this PR](https://github.com/msgpack/msgpack-ruby/pull/125). Until it's released as a stable version (>1.0.0), you need to use the HEAD version of the `msgpack` gem:
+
+```ruby
+gem 'msgpack_rpc_client'
+# TODO remove once msgpack v1.0.1 or later is released
+gem 'msgpack', git: 'https://github.com/msgpack/msgpack-ruby.git'
+```
 
 ## Usage
 
