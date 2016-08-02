@@ -2,7 +2,7 @@
 
 require 'msgpack_rpc_client'
 
-client = MsgpackRpcClient.new('127.0.0.1', 12345)
+client = MsgpackRpcClient.new(host: '127.0.0.1', port: 12345)
 
 response = client.call('Greeter.HelloWorld', name: 'Ruby')
 # {:greeting=>"Hello, Ruby"}

@@ -4,7 +4,7 @@ require 'json'
 require 'msgpack_rpc_client'
 require 'benchmark/ips'
 
-msgpack_client = MsgpackRpcClient.new('127.0.0.1', 12345)
+msgpack_client = MsgpackRpcClient.new(host: '127.0.0.1', port: 12345)
 http_uri = URI('http://localhost:12344/hello_world')
 
 Benchmark.ips do |x|
