@@ -29,8 +29,9 @@ describe MsgpackRpcClient do
     expect do
       threads = Array.new(10) do |i|
         Thread.new do
-          100.times do
-            subject.call('test', 'foo')
+          100.times do |j|
+            message = "foo_#{i}_#{j}"
+            expect(subject.call('echo', message)).to eq(message)
           end
         end
       end
